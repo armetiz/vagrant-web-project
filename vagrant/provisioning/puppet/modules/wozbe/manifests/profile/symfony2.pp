@@ -1,4 +1,6 @@
-class wozbe::profile::symfony2 {
+class wozbe::profile::symfony2 (
+    $dist_conf = {}
+){
     class { 'apache':
         mpm_module => 'prefork',
     }
@@ -6,7 +8,7 @@ class wozbe::profile::symfony2 {
     $apache_mods = ['rewrite',]
     apache::mod { $apache_mods: }
 
-    class {'wozbe::php5::php55': } -> apache::mod { 'php5': }
+    class {'wozbe::php5::php55': dist_conf => $dist_conf } -> apache::mod { 'php5': }
     ->
     # It looks like the puppetlabs/apache module is not fully compatible
     # with php5.5 on Debian Wheezy, so we have to manually add type for 
