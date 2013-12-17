@@ -7,6 +7,8 @@ You project have to be copied inside **project/** folder.
 ## Quick Start
 
 ```bash
+$ git submodule init
+$ git submodule update
 $ vagrant up
 ```
 
